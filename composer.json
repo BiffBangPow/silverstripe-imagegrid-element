@@ -1,6 +1,6 @@
 {
-  "name": "biffbangpow/silverstripe-elementmodule-template",
-  "description": "A basic skeleton for a Silverstripe 4 elemental module",
+  "name": "biffbangpow/silverstripe-imagegrid-element",
+  "description": "A simple image grid element for Silverstripe",
   "type": "silverstripe-vendormodule",
   "minimum-stability": "dev",
   "license": "proprietary",
@@ -17,7 +17,10 @@
   "require": {
     "silverstripe/vendor-plugin": "^1.0",
     "silverstripe/cms": "^4",
-    "dnadesign/silverstripe-elemental": "^4@stable || ^3@stable"
+    "dnadesign/silverstripe-elemental": "^4@stable || ^3@stable",
+    "biffbangpow/silverstripe-element-spacing": "^1",
+    "biffbangpow/silverstripe-sortable-extension": "^2",
+    "unclecheese/display-logic": "^2"
   },
   "autoload": {
     "psr-4": {
