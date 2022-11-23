@@ -10,10 +10,10 @@
         </div>
     <% end_if %>
     <% if $Items %>
-        <div class="row mb-4 row-cols-6">
+        <div class="row mb-4 row-cols-2 row-cols-md-4 row-cols-lg-6">
 
             <% loop $Items %>
-                <div class="col">
+                <div class="col mb-3">
                     <% if $LinkData %>
                     <a href="$LinkData.Link"
                     <% if $LinkData.Target == 'external' %> target="_blank" rel="noopener"<% end_if %>

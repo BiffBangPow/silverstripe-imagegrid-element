@@ -13,7 +13,6 @@ use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 class ImageGridElement extends BaseElement
 {
     private static $table_name = 'ImageGridElement';
-    private static $icon = 'font-icon-thumbnails';
     private static $db = [
         'Content' => 'HTMLText'
     ];
@@ -35,6 +34,7 @@ class ImageGridElement extends BaseElement
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
+        $fields->removeByName(['Items']);
         $fields->addFieldsToTab('Root.Main', [
             HTMLEditorField::create('Content')->setDescription('Shown above the images')->setRows(10),
             GridField::create('Items', 'Images', $this->Items(), GridFieldConfig_RecordEditor::create()
@@ -42,6 +42,11 @@ class ImageGridElement extends BaseElement
         ]);
 
         return $fields;
+    }
+
+    public function getSimpleClassName()
+    {
+        return 'bbp-image-grid';
     }
 
 }
