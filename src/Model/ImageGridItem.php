@@ -42,6 +42,11 @@ class ImageGridItem extends DataObject
         'file' => 'Link to a file'
     ];
 
+    private static $summary_fields = [
+        'Image.CMSThumbnail' => 'Image',
+        'Image.Title' => 'File'
+    ];
+
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
