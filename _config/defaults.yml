@@ -1,0 +1,10 @@
+---
+Name: bbp-imagegrid-defaults
+---
+
+BiffBangPow\Element\ImageGridElement:
+  defaults:
+    "ColsMobile": 2
+    "ColsTablet": 4
+    "ColsDesktop": 6
+    "ColsLarge": 8

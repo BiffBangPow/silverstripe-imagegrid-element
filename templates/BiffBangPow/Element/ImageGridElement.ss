@@ -10,7 +10,7 @@
         </div>
     <% end_if %>
     <% if $Items %>
-        <div class="row mb-4 row-cols-2 row-cols-md-4 row-cols-lg-6">
+        <div class="row mb-4 row-cols-$ColsMobile row-cols-md-$ColsTablet row-cols-lg-$ColsDesktop row-cols-xl-$ColsLarge">
 
             <% loop $Items %>
                 <div class="col mb-3">
