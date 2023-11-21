@@ -2,6 +2,7 @@
 
 namespace BiffBangPow\Element;
 
+use BiffBangPow\Element\Control\ImageGridElementController;
 use BiffBangPow\Element\Model\ImageGridItem;
 use DNADesign\Elemental\Models\BaseElement;
 use SilverStripe\Forms\DropdownField;
@@ -30,6 +31,8 @@ class ImageGridElement extends BaseElement
     private static $cascade_duplicates = [
         'Items'
     ];
+
+    private static $controller_class = ImageGridElementController::class;
 
     const COLUMN_OPTIONS = [
         1 => 1,

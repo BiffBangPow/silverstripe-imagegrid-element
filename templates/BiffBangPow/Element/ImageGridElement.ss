@@ -1,10 +1,10 @@
 <div class="container">
     <% if $Title && $ShowTitle %>
-        <h2 class="imagegrid-title mb-3 mb-xl-4">$Title</h2>
+        <h2 class="element-title mb-4">$Title</h2>
     <% end_if %>
     <% if $Content %>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 mb-4">
                 $Content
             </div>
         </div>
