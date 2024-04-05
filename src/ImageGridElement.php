@@ -10,6 +10,7 @@ use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use SilverStripe\Forms\HeaderField;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+use Symbiote\GridFieldExtensions\GridFieldConfigurablePaginator;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
@@ -61,9 +62,17 @@ class ImageGridElement extends BaseElement
         $fields->removeByName(['Items', 'ColsMobile', 'ColsTablet', 'ColsDesktop', 'ColsLarge']);
         $fields->addFieldsToTab('Root.Main', [
             HTMLEditorField::create('Content')->setDescription('Shown above the images')->setRows(10),
-            GridField::create('Items', 'Images', $this->Items(), GridFieldConfig_RecordEditor::create()
+            $gridField = GridField::create('Items', 'Images', $this->Items(), GridFieldConfig_RecordEditor::create()
                 ->addComponent(new GridFieldOrderableRows()))
         ]);
+
+        $paginator = GridFieldConfigurablePaginator::create();
+        $paginator->setPageSizes([20, 50, 100]);
+        $paginator->setItemsPerPage(50);
+
+        $gridField->getConfig()
+            ->removeComponentsByType('GridFieldPaginator')
+            ->addComponent($paginator);
 
         $fields->addFieldsToTab('Root.Settings', [
             HeaderField::create('Number of columns to show:'),
