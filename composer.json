@@ -15,12 +15,10 @@
     }
   ],
   "require": {
-    "silverstripe/vendor-plugin": "^1.0",
-    "silverstripe/cms": "^4",
-    "dnadesign/silverstripe-elemental": "^4@stable || ^3@stable",
+    "dnadesign/silverstripe-elemental": "*",
     "biffbangpow/silverstripe-element-spacing": "^1",
     "biffbangpow/silverstripe-sortable-extension": "^2",
-    "unclecheese/display-logic": "^2"
+    "unclecheese/display-logic": "^3"
   },
   "autoload": {
     "psr-4": {
