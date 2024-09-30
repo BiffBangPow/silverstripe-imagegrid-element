@@ -66,9 +66,8 @@ class ImageGridElement extends BaseElement
                 ->addComponent(new GridFieldOrderableRows()))
         ]);
 
-        $paginator = GridFieldConfigurablePaginator::create();
-        $paginator->setPageSizes([20, 50, 100]);
-        $paginator->setItemsPerPage(50);
+        $paginator = GridFieldConfigurablePaginator::create(50, [20, 50, 100]);
+        $paginator->setItemsPerPage(20);
 
         $gridField->getConfig()
             ->removeComponentsByType('GridFieldPaginator')
