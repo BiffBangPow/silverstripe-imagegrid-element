@@ -8,6 +8,7 @@ use DNADesign\Elemental\Models\BaseElement;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+use SilverStripe\Forms\GridField\GridFieldPaginator;
 use SilverStripe\Forms\HeaderField;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use Symbiote\GridFieldExtensions\GridFieldConfigurablePaginator;
@@ -58,20 +59,21 @@ class ImageGridElement extends BaseElement
 
     public function getCMSFields()
     {
+        $paginator = GridFieldConfigurablePaginator::create(50, [20, 50, 100]);
+        $paginator->setItemsPerPage(20);
+
         $fields = parent::getCMSFields();
         $fields->removeByName(['Items', 'ColsMobile', 'ColsTablet', 'ColsDesktop', 'ColsLarge']);
         $fields->addFieldsToTab('Root.Main', [
             HTMLEditorField::create('Content')->setDescription('Shown above the images')->setRows(10),
-            $gridField = GridField::create('Items', 'Images', $this->Items(), GridFieldConfig_RecordEditor::create()
-                ->addComponent(new GridFieldOrderableRows()))
+            $gridField = GridField::create('Items', 'Images', $this->Items(),
+                GridFieldConfig_RecordEditor::create()
+                    ->removeComponentsByType(GridFieldPaginator::class)
+                    ->addComponents([
+                        new GridFieldOrderableRows(),
+                        $paginator
+                    ]))
         ]);
-
-        $paginator = GridFieldConfigurablePaginator::create(50, [20, 50, 100]);
-        $paginator->setItemsPerPage(20);
-
-        $gridField->getConfig()
-            ->removeComponentsByType('GridFieldPaginator')
-            ->addComponent($paginator);
 
         $fields->addFieldsToTab('Root.Settings', [
             HeaderField::create('Number of columns to show:'),
